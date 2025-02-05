@@ -1,11 +1,13 @@
+console.log("weight script loaded")
+
 const givenLb = document.getElementById('lbInput')
 const givenKg = document.getElementById('kgInput')
 const finalWeight = document.getElementById('lbToKgResult')
 
 const weightForm = document.getElementById('weightForm');
 
-weightForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+weightForm.addEventListener('submit', (ev) => {
+    ev.preventDefault();
     const weightFd = new FormData(weightForm);
     const weightObj = Object.fromEntries(weightFd);
 
@@ -17,12 +19,12 @@ const weightJson = localStorage.getItem('weightForm');
 const weightObj = JSON.parse(weightJson);
 
 for (key in weightObj) {
-    const markup = `
+    const weightMarkup = `
     <div>
         <span>${key}: ${weightObj[key]}</span>
     </div>
     `;
-    finalWeight.value = markup;
+    finalWeight.value = weightMarkup;
 }
 
 
@@ -49,12 +51,14 @@ const createWeightConverter = (fromUnit, toUnit) => {
         case "Lb":
             weightValueToConvert = givenLb.value;
             convertedWeightValue = (weightValueToConvert * 0.45359237);
-            finalWeight.value = weightValueToConvert + "Lb converted to imperial is: " + convertedWeightValue + "Kg";
+            finalWeight.textContent = weightValueToConvert + " Lb converted to imperial is: " + convertedWeightValue + "Kg";
+            givenLb.value = null;
             break;
         case "Kg":
             weightValueToConvert = givenKg.value;
             convertedWeightValue = (weightValueToConvert * 2.20462262185);
-            finalWeight.value = weightValueToConvert + "Kg converted to imperial is: " + convertedWeightValue + "Lb";
+            finalWeight.textContent = weightValueToConvert + " Kg converted to imperial is: " + convertedWeightValue + "Lb";
+            givenKg.value = null;
             break;
     }
 }

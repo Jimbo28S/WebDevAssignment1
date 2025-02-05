@@ -1,3 +1,5 @@
+console.log("distance script loaded")
+
 
 const finalDist = document.getElementById('milesToKm')
 const givenM = document.getElementById('milesInput')
@@ -9,8 +11,8 @@ const givenKm = document.getElementById('kmInput')
 
 const distForm = document.getElementById('distForm');
 
-distForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+distForm.addEventListener('submit', (ed) => {
+    ed.preventDefault();
     const distFd = new FormData(distForm);
     const distObj = Object.fromEntries(distFd);
 
@@ -56,12 +58,12 @@ const createConverter = (fromUnit, toUnit) => {
         case "Mile":
             valueToConvert = givenM.value;
             convertedValue = (valueToConvert * 1.60934);
-            finalDist.value = valueToConvert + "Miles converted to metric is: " + convertedValue + "Km";
+            finalDist.textContent = valueToConvert + " Miles converted to metric is: " + convertedValue + "Km";
             break;
         case "Km":
             valueToConvert = givenKm.value;
             convertedValue = (valueToConvert / 1.609);
-            finalDist.value = valueToConvert + "Km converted to imperial is: " + convertedValue + "miles";
+            finalDist.textContent = valueToConvert + " Km converted to imperial is: " + convertedValue + "miles";
             break;
     }
 }

@@ -1,3 +1,5 @@
+console.log("temp script loaded")
+
 
 const finalTemp = document.getElementById('celsiusToFahrenheit')
 const givenC = document.getElementById('celsiusInput')
@@ -52,13 +54,13 @@ const createConverter = (fromUnit, toUnit) => {
         case "°C":
             valueToConvert = givenC.value;
             convertedValue = ((valueToConvert * 9) / 5 + 32);
-            finalTemp.textContent = valueToConvert + "°C converted to fahrenheit is: " + convertedValue + "°F";
+            finalTemp.textContent = valueToConvert + " °C converted to fahrenheit is: " + convertedValue + "°F";
             givenC.value = null;
             break;
         case "°F":
             valueToConvert = givenF.value;
             convertedValue = ((valueToConvert - 32) * (5/9));
-            finalTemp.textContent = valueToConvert + "°F converted to celsius is: " + convertedValue + "°C";
+            finalTemp.textContent = valueToConvert + " °F converted to celsius is: " + convertedValue + "°C";
             givenF.value = null;
             break;
     }
