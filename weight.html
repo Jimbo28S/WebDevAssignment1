@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="bg-blue-500 p-4">
+        <div class="bg-blue-500  justify-center text-white p-4  flex">
+            <h1 class=" font-bold text-2xl">Unit Convertor</h1>
+
+        </div>
+    </nav>
+
+    <div class="p-4 mt-8   justify-center flex w-400"> 
+        <div class="bg-white shadow-md rounded-lg">
+            <div class="flex border-b">
+                <button id="Weight-tab"
+                    class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">Weight
+                </button>
+                
+                <a href="distance.html" class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">
+                    <button id="Distance-tab">Distance</button>
+                </a>
+                
+                <a href="index.html" class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">
+                    <button id="Temperature-tab">Temperature</button>
+                </a>
+                
+                
+
+            </div>
+
+
+            <div id="Weight" class="p-6">
+                <h2 class="text-xl font-semibold mb-4">Weight Conversion</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    <form  id="weightForm">
+
+                        <label class="mb-2">Kilograms (kg) to Pounds (lb)</label>
+                        <input id="kgInput" type="number" class="w-full p-2 border rounded"
+                            placeholder="Enter Kilograms (e.g., 50 or 100, 150, 200)">
+
+                        <label class="mb-2">Pounds (lb) to kilograms (kg)</label>
+                        <input id="lbInput" type="number" class="w-full p-2 border rounded"
+                            placeholder="Enter pounds (e.g., 50 or 100, 150, 200)">
+
+                        <button type="submit" onclick="weightConverter()"
+                            class="mt-2 bg-blue-500 text-white py-2 px-4 hover:bg-blue-600 rounded">Convert</button>
+                        <p id="lbToKgResult" class="mt-2"></p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <script src="./js/weightConverter.js"></script>
+</body>
+
+</html>

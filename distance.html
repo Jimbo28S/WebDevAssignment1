@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="bg-blue-500 p-4">
+        <div class="bg-blue-500  justify-center text-white p-4  flex">
+            <h1 class=" font-bold text-2xl">Unit Convertor</h1>
+
+        </div>
+    </nav>
+
+    <div class="p-4 mt-8   justify-center flex w-400"> 
+        <div class="bg-white shadow-md rounded-lg">
+            <div class="flex border-b">
+                <a href="weight.html" class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">
+                    <button id="Weight-tab">Weight</button>
+                </a>
+
+                <button id="Distance-tab"
+                    class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">Distance
+                </button>
+                
+                <a href="index.html" class="text-center  flex-1 hover: bg-blue-200 py-2 px-4 focus:bg-gray-200">
+                    <button id="Distance-tab">Temperature</button>
+                </a>
+                
+                
+
+            </div>
+
+
+
+            <div id="distance" class="p-6">
+                <h2 class="text-xl font-semibold mb-4">Distance Conversion</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    <form id="distForm">
+
+                        <label class="mb-2">Miles to kilometers (km)</label>
+                        <input id="milesInput" type="number" class="w-full p-2 border rounded"
+                            placeholder="Enter miles (e.g., 70 or 100, 120, 250)">
+
+                        <label class="mb-2">Kilometer (km) to Miles</label>
+                        <input id="kmInput" type="number" class="w-full p-2 border rounded"
+                            placeholder="Enter Kilograms (e.g., 70 or 100, 120, 250)">
+
+                        <button type="submit" onclick="setupConverter()"
+                            class="mt-2 bg-blue-500 text-white py-2 px-4 hover:bg-blue-600 rounded">Convert</button>
+                        <p id="milesToKm" class="mt-2"></p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <script src="./js/distanceConverter.js"></script>
+</body>
+
+</html>
