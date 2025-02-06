@@ -41,29 +41,62 @@ function setupConverter() {
         if (givenKm.value === "") {
             value1 = "Mile"
             value2 = "Km"
-            createConverter(value1, value2)
+            createDistanceConverter(value1, value2)
         }
         else if (givenM.value === "") {
             value1 = "Km"
             value2 = "Mile"
-            createConverter(value1, value2)
+            createDistanceConverter(value1, value2)
         }
     }
 
 
 
-const createConverter = (fromUnit, toUnit) => {
+const createDistanceConverter = (fromUnit, toUnit) => {
 
+    finalDist.textContent = "";
+    
     switch (fromUnit) {
         case "Mile":
-            valueToConvert = givenM.value;
-            convertedValue = (valueToConvert * 1.60934);
-            finalDist.textContent = valueToConvert + " Miles converted to metric is: " + convertedValue + "Km";
+            dValueToConvert = givenM.value;
+            if (dValueToConvert.includes(",")) {
+                const dValuesArray = dValueToConvert.split(",");
+
+                for (const dValue of dValuesArray) {
+                    dFormattedValue = dValue.replace(',', '');
+                    dConvertedValue = (dFormattedValue * 1.60934);
+    
+                    finalDist.textContent = finalDist.textContent.concat(" (" + dFormattedValue + " Miles" + " --> ", dConvertedValue + " Km) ");
+                    givenM.value = null;
+                }
+            }
+            else {
+                dConvertedValue = (dValueToConvert * 1.60934);
+                finalDist.textContent = dValueToConvert + " Miles converted to metric is: " + dConvertedValue + " Km";
+                givenM.value = null;
+            }
+                
             break;
         case "Km":
-            valueToConvert = givenKm.value;
-            convertedValue = (valueToConvert / 1.609);
-            finalDist.textContent = valueToConvert + " Km converted to imperial is: " + convertedValue + "miles";
+            dValueToConvert = givenKm.value;
+            if (dValueToConvert.includes(",")) {
+                const dValuesArray = dValueToConvert.split(",");
+
+                for (const dValue of dValuesArray) {
+                    dFormattedValue = dValue.replace(',', '');
+                    dConvertedValue = (dFormattedValue * 0.621371);
+
+                    finalDist.textContent = finalDist.textContent.concat(" (" + dFormattedValue + " Km" + " --> ", dConvertedValue + " Miles" + ") ");
+                    givenKm.value = null;
+                }
+            }
+            else {
+                dConvertedValue = (dValueToConvert * 0.621371);
+                finalDist.textContent = dValueToConvert + " Km converted to imperial is: " + dConvertedValue + " Miles";
+                givenKm.value = null;
+            }
+            
             break;
     }
 }
+    

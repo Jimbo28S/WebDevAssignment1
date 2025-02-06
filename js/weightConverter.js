@@ -47,18 +47,48 @@ function weightConverter() {
 
 const createWeightConverter = (fromUnit, toUnit) => {
 
+    finalWeight.textContent = "";
+
     switch (fromUnit) {
         case "Lb":
             weightValueToConvert = givenLb.value;
-            convertedWeightValue = (weightValueToConvert * 0.45359237);
-            finalWeight.textContent = weightValueToConvert + " Lb converted to imperial is: " + convertedWeightValue + "Kg";
-            givenLb.value = null;
+            if (weightValueToConvert.includes(",")) {
+                const wValuesArray = weightValueToConvert.split(",");
+
+                for (const wValue of wValuesArray) {
+                    wFormattedValue = wValue.replace(',', '');
+                    convertedWeightValue = (wFormattedValue * 0.45359237);
+
+                    finalWeight.textContent = finalWeight.textContent.concat(" (" + wFormattedValue + "Lb" + " --> ", convertedWeightValue + " Kg) ");
+                    givenLb.value = null;
+                }
+            }
+            else {
+                convertedWeightValue = (weightValueToConvert * 0.45359237);
+                finalWeight.textContent = weightValueToConvert + " Lb converted to metric is: " + convertedWeightValue + " Kg";
+                givenLb.value = null;
+            }
+            
             break;
         case "Kg":
             weightValueToConvert = givenKg.value;
-            convertedWeightValue = (weightValueToConvert * 2.20462262185);
-            finalWeight.textContent = weightValueToConvert + " Kg converted to imperial is: " + convertedWeightValue + "Lb";
-            givenKg.value = null;
+            if (weightValueToConvert.includes(",")) {
+                const wValuesArray = weightValueToConvert.split(",");
+
+                for (const wValue of wValuesArray) {
+                    wFormattedValue = wValue.replace(',', '');
+                    convertedWeightValue = (wFormattedValue * 2.20462262185);
+
+                    finalWeight.textContent = finalWeight.textContent.concat(" (" + wFormattedValue + "Kg" + " --> ", convertedWeightValue + "Lb" + ") ");
+                    givenKg.value = null;
+                }
+            }
+            else {
+                convertedWeightValue = (weightValueToConvert * 2.20462262185);
+                finalWeight.textContent = weightValueToConvert + " Kg converted to imperial is: " + convertedWeightValue + "Lb";
+                givenKg.value = null;
+            }
+            
             break;
     }
 }

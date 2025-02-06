@@ -50,18 +50,48 @@ function setupConverter() {
 
 const createConverter = (fromUnit, toUnit) => {
 
+    finalTemp.textContent = "";
+
     switch (fromUnit) {
         case "°C":
             valueToConvert = givenC.value;
-            convertedValue = ((valueToConvert * 9) / 5 + 32);
-            finalTemp.textContent = valueToConvert + " °C converted to fahrenheit is: " + convertedValue + "°F";
-            givenC.value = null;
+            if (valueToConvert.includes(",")) {
+                const valuesArray = valueToConvert.split(",");
+
+                for (const value of valuesArray) {
+                    formattedValue = value.replace(',', '')
+                    convertedValue = ((formattedValue * 9) / 5 + 32);
+
+                    finalTemp.textContent = finalTemp.textContent.concat(" (" + formattedValue + "°C" + " --> ", convertedValue + "°F" + ") ");
+                    givenC.value = null;
+                }
+            }
+            else {
+                convertedValue = ((valueToConvert * 9) / 5 + 32);
+                finalTemp.textContent = valueToConvert + " °C converted to fahrenheit is: " + convertedValue + "°F";
+                givenC.value = null;
+            }
+            
             break;
         case "°F":
             valueToConvert = givenF.value;
-            convertedValue = ((valueToConvert - 32) * (5/9));
-            finalTemp.textContent = valueToConvert + " °F converted to celsius is: " + convertedValue + "°C";
-            givenF.value = null;
+            if (valueToConvert.includes(",")) {
+                const valuesArray = valueToConvert.split(",");
+
+                for (const value of valuesArray) {
+                    formattedValue = value.replace(',', '')
+                    convertedValue = ((formattedValue - 32) * 5) / 9;
+
+                    finalTemp.textContent = finalTemp.textContent.concat(" (" + formattedValue + "°F" + " --> ", convertedValue + "°C" + ") ");
+                    givenF.value = null;
+                }
+            }
+            else {
+                convertedValue = ((valueToConvert - 32) * 5) / 9;
+                finalTemp.textContent = valueToConvert + " °F converted to fahrenheit is: " + convertedValue + "°C";
+                givenF.value = null;
+            }
+
             break;
     }
 }
