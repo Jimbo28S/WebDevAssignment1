@@ -1,16 +1,12 @@
-console.log("distance script loaded")
 
-
+// Save HTML elements as javascript variables
 const finalDist = document.getElementById('milesToKm')
 const givenM = document.getElementById('milesInput')
 const givenKm = document.getElementById('kmInput')
 
-
-
-
-
 const distForm = document.getElementById('distForm');
 
+// Code to prevent the form from reloading and losing information
 distForm.addEventListener('submit', (ed) => {
     ed.preventDefault();
     const distFd = new FormData(distForm);
@@ -33,7 +29,7 @@ for (distKey in distObj) {
 }
 
 
-
+// Function to determine which way the conversion is going, and calls the converter
 function setupConverter() {
 
     /* Distance Page */
@@ -51,7 +47,7 @@ function setupConverter() {
     }
 
 
-
+// Function to convert a single value, or an array of values
 const createDistanceConverter = (fromUnit, toUnit) => {
 
     finalDist.textContent = "";
@@ -59,6 +55,8 @@ const createDistanceConverter = (fromUnit, toUnit) => {
     switch (fromUnit) {
         case "Mile":
             dValueToConvert = givenM.value;
+
+            // If multiple values have been entered
             if (dValueToConvert.includes(",")) {
                 const dValuesArray = dValueToConvert.split(",");
 
@@ -70,6 +68,8 @@ const createDistanceConverter = (fromUnit, toUnit) => {
                     givenM.value = null;
                 }
             }
+
+            // If a single value has been entered
             else {
                 dConvertedValue = (dValueToConvert * 1.60934);
                 finalDist.textContent = dValueToConvert + " Miles converted to metric is: " + dConvertedValue + " Km";
@@ -79,6 +79,8 @@ const createDistanceConverter = (fromUnit, toUnit) => {
             break;
         case "Km":
             dValueToConvert = givenKm.value;
+
+            // If multiple values have been entered
             if (dValueToConvert.includes(",")) {
                 const dValuesArray = dValueToConvert.split(",");
 
@@ -90,6 +92,8 @@ const createDistanceConverter = (fromUnit, toUnit) => {
                     givenKm.value = null;
                 }
             }
+
+            // If a single value has been entered
             else {
                 dConvertedValue = (dValueToConvert * 0.621371);
                 finalDist.textContent = dValueToConvert + " Km converted to imperial is: " + dConvertedValue + " Miles";
